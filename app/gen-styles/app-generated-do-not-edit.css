@@ -627,6 +627,10 @@ a {
   margin-top: 2rem;
 }
 
+.mt-2 {
+  margin-top: 0.5rem;
+}
+
 .flex {
   display: flex;
 }
@@ -790,6 +794,10 @@ a {
 
 .pr-24 {
   padding-right: 6rem;
+}
+
+.pt-2 {
+  padding-top: 0.5rem;
 }
 
 .text-center {

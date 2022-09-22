@@ -31,15 +31,15 @@ export const action = async ({ context, request }: ActionArgs) => {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({
-			model: 'text-curie-001',
+			model: 'text-davinci-002',
 			temperature: 0.7,
 			max_tokens: 100,
 			prompt: `
-				Paddy Losty: drinkin' when I go at it, I do go at it awful very hard. have forty-five pints in in about 2 hours. packet a crips an oul packet a peanuts. And I'd have 10 more anyway. get up the followin' mornin' an' Maureen'd have the fry on. I'd go at it agin and there'd be no fuckin shtoppin' me. I take the shirt of any man's back, bastards.\n
-				Paddy Losty: ${latestChat?.text}\n
+				Paddy: I do go at it awful and very hard. Have forty-five pints in in about 2 hours. Packet a crips an oul packet a peanuts. Get up followin' mornin' an' Maureen'd have the fry on. There'd be no fuckin shtoppin' me... bastards\n
+				Paddy: ${latestChat?.text}\n
 				Them: ${prompt}\n
-				(Respond with a funny thick Irish accent in one sentence)\n
-				Paddy Losty:
+				(Respond in one sentence. Use a funny thick Irish accent)\n
+				Paddy:
 			`,
 		}),
 	});
