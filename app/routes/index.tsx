@@ -27,18 +27,20 @@ export const action = async ({ context, request }: ActionArgs) => {
 	const res = await fetch('https://api.openai.com/v1/completions', {
 		method: 'POST',
 		headers: {
-			// Make sure you have set OPENAI_API_KEY in your top-level `.env` file
 			Authorization: `Bearer ${context.OPENAI_API_KEY}`,
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({
-			// `text-curie-001` is the second-best model. You can customize  which one
-			// to use. See https://beta.openai.com/docs/models/gpt-3
 			model: 'text-curie-001',
 			temperature: 0.7,
 			max_tokens: 100,
-			// Customize this prompt based on the chatbot you want to create
-			prompt: `You are [an all-knowing wizard] named [Oz] talking to [a visitor]. Respond with one sentence. [Talk like a professor].\nYou: ${latestChat?.text}\nThem: ${prompt}\nYou:`,
+			prompt: `
+				Paddy Losty: drinkin' when I go at it, I do go at it awful very hard. have forty-five pints in in about 2 hours. packet a crips an oul packet a peanuts. And I'd have 10 more anyway. get up the followin' mornin' an' Maureen'd have the fry on. I'd go at it agin and there'd be no fuckin shtoppin' me. I take the shirt of any man's back, bastards.\n
+				Paddy Losty: ${latestChat?.text}\n
+				Them: ${prompt}\n
+				(Respond with a funny thick Irish accent in one sentence)\n
+				Paddy Losty:
+			`,
 		}),
 	});
 	const { choices } = await res.json<{ choices: Array<{ text: string }> }>();
@@ -127,11 +129,10 @@ export default function Home() {
 						src="/logo.png"
 						width={80}
 						height={80}
-						className="rounded-2xl mr-4"
+						className="rounded-2xl mr-4 border border-gray-700"
 						alt="Logo"
 					/>
-					{/* Customize with your chatbot's name */}
-					<h1>Talk to [Oz]</h1>
+					<h1>Talk to Pintman</h1>
 				</div>
 
 				<div className="flex flex-col w-full h-[400px] md:h-[500px] p-2 bg-gray-800 border border-gray-600 rounded mt-8 overflow-y-scroll relative">
@@ -156,8 +157,7 @@ export default function Home() {
 							name="prompt"
 							required
 							className="w-full h-24 resize-none bg-gray-400 rounded p-3 pr-24 text-gray-900 placeholder:text-gray-600"
-							// Customize the prompt with your chatbot's name
-							placeholder="Start chatting with [Oz]..."
+							placeholder="Start chatting with Pintman..."
 							onKeyDown={onKeyDown}
 						></textarea>
 						<button type="submit" className="absolute bottom-3 right-3">
@@ -171,10 +171,21 @@ export default function Home() {
 					</Form>
 				</div>
 
-				<div className="mt-8 text-sm text-gray-400 text-center">
-					Made with{' '}
-					<a href="https://github.com/dgurns/make-your-own-chatbot">
-						Make Your Own Chatbot
+				<div className="flex flex-col space-y-2 mt-8 text-sm text-gray-400 text-center">
+					<a
+						href="https://www.youtube.com/watch?v=LkcXjholnGk"
+						className="text-gray-400"
+						target="_blank"
+						rel="noreferrer"
+					>
+						▶️ Watch the Pintman video
+					</a>
+					<span>
+						A project by <a href="https://dangurney.net">Dan</a> and{' '}
+						<a href="https://www.instagram.com/retrored1">Padraig</a>
+					</span>
+					<a href="https://github.com/dgurns/talk-to-pintman">
+						View source code
 					</a>
 				</div>
 			</div>
