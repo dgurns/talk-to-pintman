@@ -77,8 +77,12 @@ export default function Home() {
 	const chatsRef = useRef<HTMLUListElement>(null);
 	const { state } = useTransition();
 
+	const startingChatTexts = ['Gwan lads, ask me anything'];
+	const startingChatIndex = Math.round(
+		Math.random() * (startingChatTexts.length - 1)
+	);
 	const [chats, setChats] = useState<Chat[]>([
-		{ author: 'ai', text: "Mornin'.. bastards." },
+		{ author: 'ai', text: startingChatTexts[startingChatIndex] },
 	]);
 
 	const submit = useSubmit();
@@ -133,7 +137,10 @@ export default function Home() {
 						className="rounded-2xl mr-4 border border-gray-700"
 						alt="Logo"
 					/>
-					<h1>Talk to Pintman</h1>
+					<div className="flex flex-col">
+						<div className="text-2xl text-gray-400">Have a Pint with</div>
+						<div className="text-5xl font-bold">Pintman</div>
+					</div>
 				</div>
 
 				<div className="flex flex-col w-full h-[400px] md:h-[500px] p-2 bg-gray-800 border border-gray-600 rounded mt-8 overflow-y-scroll relative">
