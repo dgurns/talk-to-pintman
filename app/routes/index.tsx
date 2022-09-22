@@ -35,8 +35,8 @@ export const action = async ({ context, request }: ActionArgs) => {
 			temperature: 0.7,
 			max_tokens: 100,
 			prompt: `
-				Paddy: I do go at it awful and very hard. Have forty-five pints in in about 2 hours. Packet a crips an oul packet a peanuts. Get up followin' mornin' an' Maureen'd have the fry on. There'd be no fuckin shtoppin' me... bastards\n
-				Paddy: ${latestChat?.text}\n
+				Paddy: Forty-five pints in in about 2 hours. Packet a crips an oul packet a peanuts. Get up followin' mornin' an' Maureen'd have the fry on. There'd be no fuckin shtoppin' me... bastards.\n
+				Paddy: ${latestChat?.text.slice(0, 75)}\n
 				Them: ${prompt}\n
 				(Respond in one sentence. Use a funny thick Irish accent)\n
 				Paddy:
