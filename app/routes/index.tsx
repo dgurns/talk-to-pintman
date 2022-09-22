@@ -77,7 +77,7 @@ export default function Home() {
 	const { state } = useTransition();
 
 	const [chats, setChats] = useState<Chat[]>([
-		{ author: 'ai', text: 'Hello, what would you like to ask me?' },
+		{ author: 'ai', text: "Mornin'.. bastards." },
 	]);
 
 	const submit = useSubmit();
